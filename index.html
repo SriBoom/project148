@@ -2,24 +2,31 @@
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"> </script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 </head>
 
 <body>
-    <a-scene background="white">
-        <a-camera position="0 0 10"></a-camera>
+    <a-scene>
         <a-assets timeout="10000">
             <a-asset-item id="cat" src="./models/cat2/scene.gltf"></a-asset-item>
             <a-asset-item id="human" src="./models/woman_walking/scene.gltf"></a-asset-item>
+            <a-asset-item id="lamp" src="./models/lamp/scene.gltf"></a-asset-item>
             <img id="bg" src="./background-image.jpg">
         </a-assets>
 
-        <a-circle position="0 0 0" color="gray" radius="50" rotation="-90 0 0"></a-circle>
+        <!--<a-circle position="0 0 0" color="gray" radius="50" rotation="-90 0 0"></a-circle>-->
+        <a-sky src="#bg"></a-sky>
 
         <a-entity>
-            <a-entity position="0 0 0" rotation="0 55 0" scale="5 5 5" gltf-model="#cat" shadow="cast: true;">
-            </a-entity>
-          </a-entity>
+            <a-entity position="3 0 -5" rotation="0 -50 0" scale="2 2 2" gltf-model="#cat" shadow="cast: true;"></a-entity>
+        </a-entity>
+
+        <a-entity>
+            <a-entity position="3 0 -10" rotation="0 -50 0" scale="0.6 0.6 0.6" gltf-model="#lamp" shadow="cast: true;"></a-entity>
+        </a-entity>
+
+        <a-entity light="type: point; intensity: 20; distance: 50; decay: 2" position="3 0 -10"></a-entity>
+        <a-entity light="type: ambient;"> </a-entity>
     </a-scene>
 </body>
 
